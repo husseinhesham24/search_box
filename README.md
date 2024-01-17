@@ -1,25 +1,17 @@
-# README
+```
+ .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------. 
+| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |
+| |    _______   | || |  _________   | || |      __      | || |  _______     | || |     ______   | || |  ____  ____  | |
+| |   /  ___  |  | || | |_   ___  |  | || |     /  \     | || | |_   __ \    | || |   .' ___  |  | || | |_   ||   _| | |
+| |  |  (__ \_|  | || |   | |_  \_|  | || |    / /\ \    | || |   | |__) |   | || |  / .'   \_|  | || |   | |__| |   | |
+| |   '.___`-.   | || |   |  _|  _   | || |   / ____ \   | || |   |  __ /    | || |  | |         | || |   |  __  |   | |
+| |  |`\____) |  | || |  _| |___/ |  | || | _/ /    \ \_ | || |  _| |  \ \_  | || |  \ `.___.'\  | || |  _| |  | |_  | |
+| |  |_______.'  | || | |_________|  | || ||____|  |____|| || | |____| |___| | || |   `._____.'  | || | |____||____| | |
+| |              | || |              | || |              | || |              | || |              | || |              | |
+| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
+ '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```
+# Search Box
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# search_box
+This project is a Real-time search box, where users search articles and have analytics that display what users were searching for. You can also track via IP.
