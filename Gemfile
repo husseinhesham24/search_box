@@ -6,8 +6,7 @@ gem 'jquery-rails'
 
 gem 'mini_racer'
 
-gem 'pg_search'
-
+gem 'faker'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.2"
 

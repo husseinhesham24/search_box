@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: %i[ show ]
 
   def index
     if params[:query].present?
@@ -7,9 +6,6 @@ class ArticlesController < ApplicationController
     else
       @articles = Article.all
     end
-  end
-
-  def show
   end
 
   def new
@@ -28,10 +24,6 @@ class ArticlesController < ApplicationController
   end
 
   private
-
-  def set_article
-    @article = Article.find(params[:id])
-  end
 
   def article_params
     params.require(:article).permit(:title, :body)

@@ -1,14 +1,14 @@
 <div class="row justify-content-md-center mr-0">
   <div class="col-4 mt-4"> 
-    <%= form_with(url: articles_path, method: :get, data: {controller: "search-form", turbo_frame: "articles", turbo_action: "advance" }) do |form| %>
+    <%= form_with(url: articles_path, method: :get, data: {controller: "search-form", turbo_frame: "articles_turbo", turbo_action: "advance" }) do |form| %>
      <form class="form-inline my-2 my-lg-0">
-         <%= form.text_field :query, class: "form-control mr-sm-2", placeholder: "What do you think about?", data: { action: "input->search-form#search" } %>
+         <%= form.text_field :query, id:"searchInput", class: "form-control mr-sm-2", placeholder: "What do you think about?", data: { action: "input->search-form#search" } %>
      </form>
     <% end %>
   </div>
 </div>
 
 
-<%= turbo_frame_tag "articles" do %>
+<%= turbo_frame_tag "articles_turbo" do %>
   <%= render "articles" %>
 <% end %>
