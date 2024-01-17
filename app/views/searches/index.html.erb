@@ -1,18 +1,16 @@
 <h1 class="text-center mt-4">Analytics & Trends</h1>
 <div class="container">
-  <% @searches.each do |search| %>
+  <% @searches.each do |query, count| %>
     <div class="row justify-content-md-center">
       <div class="col-8 mt-4">
         <div class="card text-center shadow mb-5 bg-white rounded">
           <div class="card-body">
-            <h5 class="card-title text-success"><%= search.query %></h5>
+            <h5 class="card-title text-success"><%= query %></h5>
           </div>
           <div class="card-footer text-muted">
-            <small>
-              searched: <%=time_ago_in_words(search.created_at)%> ago <br>
-              most searched country  <%=time_ago_in_words(search.updated_at)%> ago
-              most searched city  <%=time_ago_in_words(search.updated_at)%> ago
-            </small>
+            <large>
+              Searched <%= count %> times
+            </large>
           </div>
         </div>
       </div>

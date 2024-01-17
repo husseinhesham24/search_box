@@ -1,7 +1,7 @@
 class SearchesController < ApplicationController
   
   def index
-    @searches = Search.all
+    @searches = Search.group(:query).order('count_all DESC').count
   end
 
   def get_history
