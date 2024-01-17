@@ -14,4 +14,4 @@
 ```
 # Search Box
 
-This project is a Real-time search box, where users search articles and have analytics that display what users were searching for. You can also track via IP.
+This project is a Real-time search box, where users search articles by title and body and have analytics that display what users were searching for. You can also track via IP.
