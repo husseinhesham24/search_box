@@ -5,9 +5,10 @@ RUN apk --no-cache --update --available upgrade
 RUN apk add --no-cache --update \
   && apk add build-base \
   git \
+  sqlite \
+  sqlite-dev \
   postgresql-dev \
   postgresql-client \
-  sqlite-dev \
   tzdata \
   curl bash
 
