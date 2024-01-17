@@ -5,8 +5,6 @@ RUN apk --no-cache --update --available upgrade
 RUN apk add --no-cache --update \
   && apk add build-base \
   git \
-  sqlite \
-  sqlite-dev \
   postgresql-dev \
   postgresql-client \
   tzdata \
@@ -19,6 +17,10 @@ COPY Gemfile* ./
 RUN bundle install
 
 COPY . .
+
+RUN rails db:migrate
+
+RUN rails db:seed
 
 EXPOSE 3000
 
