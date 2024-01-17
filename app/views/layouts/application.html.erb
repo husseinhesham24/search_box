@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SearchBox</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application" %>
+    <link rel="stylesheet" href="/bootstrap-4-4-1/css/bootstrap.css" >
+    <link rel="stylesheet" href="../app/assets/stylesheets/custom.css">
+    <script src="/jquery/jquery-3-4-1.js"></script>
+    <script src="/bootstrap-4-4-1/js/bootstrap.js"></script>
+  </head>
+
+  <body class="d-flex flex-column">
+  
+    <%= render 'layouts/navigation' %>
+    <div id="page-content">
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer'%>
+  </body>
+</html>
