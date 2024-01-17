@@ -7,6 +7,7 @@ RUN apk add --no-cache --update \
   git \
   postgresql-dev \
   postgresql-client \
+  sqlite-dev \
   tzdata \
   curl bash
 
