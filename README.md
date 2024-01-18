@@ -21,7 +21,7 @@ This project is a Real-time search box, where users search articles by title and
 - [Tools & Technologies](#tools-and-technologies)
 - [controllers](#controllers)
 - [Installation](#installation)
-- [Possible future improvements](#possible-future-improvements)
+- [Demo](#demo)
 
 ## Tools and Technologies
 
