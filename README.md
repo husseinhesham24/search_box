@@ -20,16 +20,20 @@ This project is a Real-time search box, where users search articles by title and
 
 - [Tools & Technologies](#tools-and-technologies)
 - [controllers](#controllers)
+- [Search engine logic](#search-engine-logic)
+- [Sidekiq Job](#sidekiq-job)
 - [Installation](#installation)
 - [Demo](#demo)
 
 ## Tools and Technologies
 
-- Ruby: v3.2.2
-- Rails: v7.1.2
-- Sqlite: v1.7
-- Bootstrap: v4.4.1
-- Docker
+- Ruby: 3.2.2
+- Rails: 7.1.2
+- postgreSQL: 15.5
+- Redis: 7.2.4
+- Bootstrap: 4.4.1
+- Sidekiq
+- Docker & Docker compose
 
 ## Controllers
 
@@ -119,6 +123,10 @@ This is a Stimulus controller written in JavaScript. Stimulus is a JavaScript fr
 - It uses the Fetch API to make a POST request to the "/searches#create" endpoint which includes the search query in the request body as JSON.
 
 - The X-CSRF-Token header is set to the CSRF token to protect against cross-site request forgery.
+<hr>
+
+## Sidekiq Job
+
 <hr>
 
 ## Installation
