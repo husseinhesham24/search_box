@@ -134,6 +134,7 @@ To optimize the handling of a large volume of search results and ensure efficien
 `Sidekiq.strict_args!(false):` This configuration sets strict_args to false, which means Sidekiq will not enforce strict argument checking for my background jobs. It allows me to pass non-serializable objects or complex data structures as arguments to my Sidekiq workers, like `search_params` in our case.
 
 `Sidekiq.configure_server` and `Sidekiq.configure_client`: Configuring the Redis connection for both the server and client, with the Redis server located at `redis://redis:6379/1`.
+<hr>
 
 **In `controllers/searches_controller.rb`**:
 
@@ -142,6 +143,7 @@ enqueuing a background job using Sidekiq in create action. The job, named SaveSe
 `search_params.to_h`: Converts the `search_params` into a hash. because `search_params` is an instance of ActionController::Parameters.
 
 `SaveSearchJob.perform_async(...)`: Enqueues the SaveSearchJob background job to Sidekiq. The perform_async method is used to push the job onto the Sidekiq queue.
+<hr>
 
 **In `sidekiq/save_search_job.rb`**:
 
