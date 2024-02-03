@@ -127,21 +127,52 @@ This is a Stimulus controller written in JavaScript. Stimulus is a JavaScript fr
 
 ## Sidekiq Job
 
+To optimize the handling of a large volume of search results and ensure efficient processing, I am considering leveraging the robust capabilities of Sidekiq, a powerful background job processing library. Instead of burdening the controller with creating and saving search results, I propose offloading this operation to Sidekiq. This approach allows for asynchronous processing, enhancing the overall performance and responsiveness of the application.
+
+**In `config/initializers/sidekiq.rb`**:
+
+`Sidekiq.strict_args!(false):` This configuration sets strict_args to false, which means Sidekiq will not enforce strict argument checking for my background jobs. It allows me to pass non-serializable objects or complex data structures as arguments to my Sidekiq workers, like `search_params` in our case.
+
+`Sidekiq.configure_server` and `Sidekiq.configure_client`: Configuring the Redis connection for both the server and client, with the Redis server located at `redis://redis:6379/1`.
+
+**In `controllers/searches_controller.rb`**:
+
+enqueuing a background job using Sidekiq in create action. The job, named SaveSearchJob, is tasked with performing some operations asynchronously. Here is a breakdown of what your code is doing:
+
+`search_params.to_h`: Converts the `search_params` into a hash. because `search_params` is an instance of ActionController::Parameters.
+
+`SaveSearchJob.perform_async(...)`: Enqueues the SaveSearchJob background job to Sidekiq. The perform_async method is used to push the job onto the Sidekiq queue.
+
+**In `sidekiq/save_search_job.rb`**:
+
+This setup ensures that the search is associated with the correct user and is saved to the database. If any issues occur during the save operation, it will be logged, and the exception will be re-raised to notify Sidekiq about the failure. Ensure that your User and Search models are defined correctly and have the necessary associations.
+
+`User.find_by(id: user_id)`: Retrieves the User instance based on the user_id.
+
+`Search.new(search_params)`: Creates a new Search instance with the provided search_params.
+
+`@search.user = current_user`: Associates the created Search instance with the current_user.
+
+`@search.save!`: Attempts to save the Search instance to the database. The use of save! will raise an exception if the save operation fails.
+
+`rescue StandardError => e`: Catches any exceptions that may occur during the save operation.
+
+`Rails.logger.error("SaveSearchJob failed: #{e.message}")`: Logs an error message if the save operation fails. This is helpful for debugging and monitoring.
+
+`raise e`: Re-raises the exception after logging, ensuring that Sidekiq will mark the job as failed.
 <hr>
 
 ## Installation
 
-Build the Docker image using the docker build command.
+Build the Docker compose image by the following command.
 ```bash
-docker build -t your_image_name .
+docker compose build
 ```
  <br>
 
-Create a Docker container from the image you just built.
+Create a Docker containers the following commad.
 ```bash
-
-
-docker run -p  3000:3000 --name your_container_name -it your_image_name bash
+docker compose up
 ```
 <hr>
 
