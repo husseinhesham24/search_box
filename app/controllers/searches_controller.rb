@@ -8,16 +8,8 @@ class SearchesController < ApplicationController
     @searches = current_user.searches.order(created_at: :desc)
   end
 
-  def new
-    @search = Search.new
-  end
-
   def create
-    @search = Search.new(search_params)
-    @search.user = current_user
-    unless @search.save
-      render "new", status: :unprocessable_entity
-    end
+    SaveSearchJob.perform_async(search_params.to_h, current_user.id)
   end
 end
 
